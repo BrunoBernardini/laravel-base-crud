@@ -20,7 +20,16 @@
                         <td>{{$comic->type}}</td>
                         <td>
                             <a href="{{route('comics.show', $comic)}}" class="btn btn-success">SHOW</a>
-                            <a href="#" class="btn btn-primary">EDIT</a>
+                            <a href="{{route('comics.edit', $comic)}}" class="btn btn-primary">EDIT</a>
+                            <form
+                                class="d-inline"
+                                action="{{route('comics.destroy', $comic)}}"
+                                onsubmit="return confirm('Confermi l\'eliminazione di {{$comic->title}}?')"
+                                method="POST">
+                                @csrf
+                                @method("DELETE")
+                                <button type="submit" class="btn btn-danger">DELETE</button>
+                            </form>
                         </td>
                     </tr>
                 @endforeach

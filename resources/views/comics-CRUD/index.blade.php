@@ -2,6 +2,11 @@
 
 @section("content")
     <div class="container">
+        @if (session("cancelled_comic"))
+            <div class="alert alert-success" role="alert">
+                {{session("cancelled_comic")}}
+            </div>
+        @endif
         <h1>I nostri comics</h1>
         <table class="table">
             <thead>

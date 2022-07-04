@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Comic;
+use App\Http\Requests\ComicRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -35,7 +36,7 @@ class ComicsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ComicRequest $request)
     {
         $data = $request->all();
         $data["slug"] = $this->generateSlug($data["title"]);
@@ -79,7 +80,7 @@ class ComicsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comic $comic)
+    public function update(ComicRequest $request, Comic $comic)
     {
         $data = $request->all();
         if($comic->title != $data["title"]) $data["slug"] = $this->generateSlug($data["title"]);
